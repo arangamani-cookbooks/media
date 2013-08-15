@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: media
-# Recipe:: default
+# Recipe:: setup_nfs_shares
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -16,21 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# Media devices to mount. This is a hash of keys as the devices and values as
-# their mount points.
-#
-# @example Example Hash
-#   {
-#     "/dev/sdb1" => "/mnt/movies",
-#     "/dev/sdc1" => "/mnt/backups"
-#   }
-#
-default['media']['devices'] = {}
-
-# NFS shares to mount
-#
-# @example Example NFS Shares
-#   ["/mnt/movies", "/mnt/backups"]
-#
-default['media']['nfs_shares'] = []
