@@ -34,3 +34,9 @@ default['media']['devices'] = {}
 #   ["/mnt/movies", "/mnt/backups"]
 #
 default['media']['nfs_shares'] = []
+
+# The user to be used for media mount points
+default['media']['user'] = 'root'
+
+# The group to be used for media mount points
+default['media']['group'] = 'root'
