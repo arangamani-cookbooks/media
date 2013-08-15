@@ -42,6 +42,6 @@ devices.each do |mnt_device|
   mount mount_point do
     device mnt_device
     fstype file_system_type
-    action [:create, :enable]
+    action [:mount, :enable]
   end
 end
