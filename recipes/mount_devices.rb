@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+log "Setting up media devices: #{node['media']['devices'].inspect}"
 devices = node['media']['devices'].keys
 
 devices.each do |mnt_device|
@@ -37,6 +38,8 @@ devices.each do |mnt_device|
   file_system_type = Media::Helper.get_file_system_type(mnt_device)
   raise "Unable to find the file system type for device '#{mnt_device}'" \
     if file_system_type.nil?
+  Chef::Log.info "File system type for '#{mnt_device}' is detected to be:" +
+    "#{file_system_type}"
 
   # Mount the device in the specified
   mount mount_point do

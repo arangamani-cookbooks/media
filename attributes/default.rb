@@ -28,15 +28,23 @@
 #
 default['media']['devices'] = {}
 
-# NFS shares to mount
-#
-# @example Example NFS Shares
-#   ["/mnt/movies", "/mnt/backups"]
-#
-default['media']['nfs_shares'] = []
-
 # The user to be used for media mount points
 default['media']['user'] = 'root'
 
 # The group to be used for media mount points
 default['media']['group'] = 'root'
+
+# NFS shares to mount
+# By default it takes all mount points given in the node['media']['devices']
+# @example Example NFS Shares
+#   ["/mnt/movies", "/mnt/backups"]
+#
+default['media']['nfs_shares'] = node['media']['devices'].values
+
+default['media']['nfs_network'] = ''
+
+default['media']['nfs_writable'] = true
+
+default['media']['nfs_sync'] = true
+
+default['media']['nfs_options'] = ['no_root_squash']

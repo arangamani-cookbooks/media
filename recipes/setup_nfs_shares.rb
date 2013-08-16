@@ -16,3 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+include_recipe "nfs::server"
+
+node['media']['nfs_shares'].each do |nfs_share|
+  nfs_export nfs_share do
+    network node['media']['nfs_network']
+    writeable node['media']['nfs_writable']
+    sync node['media']['nfs_sync']
+    options node['media']['nfs_options']
+  end
+end
+
+service "nfs-kernel-server" do
+  action :restart
+end
