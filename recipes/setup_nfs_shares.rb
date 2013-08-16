@@ -17,17 +17,16 @@
 # limitations under the License.
 #
 
+# Setup the NFS server
 include_recipe "nfs::server"
 
-node['media']['nfs_shares'].each do |nfs_share|
+# Setup the exports entry for each NFS share
+node['media']['nfs']['shares'].each do |nfs_share|
   nfs_export nfs_share do
-    network node['media']['nfs_network']
-    writeable node['media']['nfs_writable']
-    sync node['media']['nfs_sync']
-    options node['media']['nfs_options']
+    network node['media']['nfs']['network']
+    writeable node['media']['nfs']['writable']
+    sync node['media']['nfs']['sync']
+    options node['media']['nfs']['options']
+    notifies :restart, "service[nfs-kernel-server]"
   end
-end
-
-service "nfs-kernel-server" do
-  action :restart
 end

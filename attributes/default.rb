@@ -39,12 +39,12 @@ default['media']['group'] = 'root'
 # @example Example NFS Shares
 #   ["/mnt/movies", "/mnt/backups"]
 #
-default['media']['nfs_shares'] = node['media']['devices'].values
+default['media']['nfs']['shares'] = node['media']['devices'].values
 
-default['media']['nfs_network'] = ''
+default['media']['nfs']['network'] = ''
 
-default['media']['nfs_writable'] = true
+default['media']['nfs']['writable'] = true
 
-default['media']['nfs_sync'] = true
+default['media']['nfs']['sync'] = true
 
-default['media']['nfs_options'] = ['no_root_squash']
+default['media']['nfs']['options'] = ['no_root_squash']
