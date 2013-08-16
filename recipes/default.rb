@@ -17,4 +17,5 @@
 # limitations under the License.
 #
 
+# Mount all the media devices
 include_recipe "media::mount_devices"
