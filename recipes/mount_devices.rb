@@ -41,9 +41,24 @@ devices.each do |mnt_device|
   Chef::Log.info "File system type for '#{mnt_device}' is detected to be:" +
     "#{file_system_type}"
 
+  # If the devices follow /dev/disk/by-label/xxxx or /dev/disk/by-uuid/xxxx the
+  # device type will be extracted and passed on to the mount resource. The
+  # mount resource accepts the "label", "uuid", and "device" types.
+  #
+  match = mnt_device.match(/^\/dev\/disk\/by-(.*?)\/(.*)$/)
+  unless match.nil?
+    if ['uuid', 'label'].include?(match[1])
+      mnt_device_type = match[1]
+      mnt_device = match[2]
+    else
+      mnt_device_type = 'device'
+    end
+  end
+
   # Mount the device in the specified
   mount mount_point do
     device mnt_device
+    device_type mnt_device_type
     fstype file_system_type
     action [:mount, :enable]
   end
