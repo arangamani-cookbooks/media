@@ -28,6 +28,10 @@ node.set['media']['devices'] = {
   '/dev/disk/by-label/songs' => '/mnt/songs'
 }
 
+# Include the recipe
+include_recipe "media::default"
+```
+
 ### Pro Tip
 It is recommended that you set up the devices by UUID because the device
 location cannot always be the same and can lead to confusion. The UUID and
@@ -38,10 +42,6 @@ Example:
 ```bash
 $ sudo blkid /dev/sdb1
 $ /dev/sdb1: LABEL="movies" UUID="C60475200468787521" TYPE="ntfs"
-```
-
-# Include the recipe
-include_recipe "media::default"
 ```
 
 ## For setting up the NFS shares
