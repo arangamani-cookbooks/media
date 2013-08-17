@@ -4,7 +4,7 @@ maintainer_email 'me@arangamani.net'
 license          'Apache 2.0'
 description      'Installs/Configures media'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '1.0.0'
+version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '1.1.0'
 
 %w{ ubuntu debian redhat centos fedora scientific }.each do |os|
   supports os
