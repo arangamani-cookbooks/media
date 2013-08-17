@@ -60,6 +60,17 @@ Usage for more details.
 This recipe installs the requied packages for NFS server and sets up the nfs
 shares.
 
+## media::setup_minidlna
+This recipe sets up the minidlna media server. Example for setting this up:
+```ruby
+node.set['minidlna']['video_directories'] = [
+  '/media/storage/movies',
+  '/media/storage/shows'
+]
+node.set['minidlna']['friendly_name'] = "Kannan's minidlna"
+include_recipe "media::setup_minidlna"
+```
+
 # Author
 
 Author:: Kannan Manickam (<me@arangamani.net>)
