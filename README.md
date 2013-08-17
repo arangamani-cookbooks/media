@@ -1,5 +1,5 @@
 # Media Chef Cookbook
-
+[![Build Status](https://travis-ci.org/arangamani-cookbooks/media.png?branch=master)](https://travis-ci.org/arangamani-cookbooks/media)
 This cookbook will setup the media devices on a server which will ideally act
 as a file/media server. Initially it will be used to mount external devices and
 add then as NFS shares.
