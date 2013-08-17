@@ -22,7 +22,7 @@ include_recipe "nfs::server"
 
 # Prepare the service[nfs-kernel-server] resource so it can be notified
 service "nfs-kernel-server" do
-  action :nothing
+  action [:start, :enable]
 end
 
 # Setup the exports entry for each NFS share
