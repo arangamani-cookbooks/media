@@ -18,7 +18,7 @@ For cookbook dependencies/requirements see `metadata.rb`.
 Prepare the `node['media']['devices']` node attribute and use the
 `media::default` or `media::mount_devices` recipe. There is no need for
 specifying the file system types. It is automatically detected and used for
-mounting the devices. Devices can also be specified wither by `uuid` or `label`.
+mounting the devices. Devices can also be specified by `uuid` and `label`.
 
 ```ruby
 # Prepare the media devices
