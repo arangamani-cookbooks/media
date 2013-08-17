@@ -18,13 +18,27 @@ For cookbook dependencies/requirements see `metadata.rb`.
 Prepare the `node['media']['devices']` node attribute and use the
 `media::default` or `media::mount_devices` recipe. There is no need for
 specifying the file system types. It is automatically detected and used for
-mounting the devices.
+mounting the devices. Devices can also be specified wither by `uuid` or `label`.
+
 ```ruby
 # Prepare the media devices
 node.set['media']['devices'] = {
   '/dev/sdb1' => '/mnt/videos',
-  '/dev/sdc1' => '/mnt/movies'
+  '/dev/disk/by-uuid/C398398878' => '/mnt/movies',
+  '/dev/disk/by-label/songs' => '/mnt/songs'
 }
+
+### Pro Tip
+It is recommended that you set up the devices by UUID because the device
+location cannot always be the same and can lead to confusion. The UUID and
+label can be found using the `blkid` command on Unix. This command will give
+the label, uuid, and the file system type.
+
+Example:
+```bash
+$ sudo blkid /dev/sdb1
+$ /dev/sdb1: LABEL="movies" UUID="C60475200468787521" TYPE="ntfs"
+```
 
 # Include the recipe
 include_recipe "media::default"
