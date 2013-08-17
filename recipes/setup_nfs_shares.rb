@@ -20,11 +20,6 @@
 # Setup the NFS server
 include_recipe "nfs::server"
 
-# Prepare the service[nfs-kernel-server] resource so it can be notified
-service "nfs-kernel-server" do
-  action [:start, :enable]
-end
-
 # Setup the exports entry for each NFS share
 node['media']['nfs']['shares'].each do |nfs_share|
   nfs_export nfs_share do
@@ -32,6 +27,6 @@ node['media']['nfs']['shares'].each do |nfs_share|
     writeable node['media']['nfs']['writable']
     sync node['media']['nfs']['sync']
     options node['media']['nfs']['options']
-    notifies :restart, "service[nfs-kernel-server]"
+    notifies :restart, "service[#{node['nfs']['service']['server']}]"
   end
 end
