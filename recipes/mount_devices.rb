@@ -38,8 +38,8 @@ devices.each do |mnt_device|
   file_system_type = Media::Helper.get_file_system_type(mnt_device)
   raise "Unable to find the file system type for device '#{mnt_device}'" \
     if file_system_type.nil?
-  Chef::Log.info "File system type for '#{mnt_device}' is detected to be:" +
-    "#{file_system_type}"
+  Chef::Log.info "File system type for '#{mnt_device}' is detected to be: " +
+    file_system_type
 
   # If the devices follow /dev/disk/by-label/xxxx or /dev/disk/by-uuid/xxxx the
   # device type will be extracted and passed on to the mount resource. The
