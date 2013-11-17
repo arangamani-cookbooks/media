@@ -90,3 +90,7 @@ include_recipe "media::setup_minidlna"
 # Author
 
 Author:: Kannan Manickam (<me@arangamani.net>)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arangamani-cookbooks/media/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
